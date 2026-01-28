@@ -107,27 +107,23 @@ export default function SiemPage() {
                 <CardDescription>Events per hour by source type</CardDescription>
               </CardHeader>
               <CardContent>
-                <ChartContainer
-                  config={{
-                    firewall: { label: "Firewall", color: "#06b6d4" },
-                    ids: { label: "IDS/IPS", color: "#8b5cf6" },
-                    system: { label: "System", color: "#10b981" },
-                  }}
-                  className="h-[350px]"
-                >
+                <div className="h-[350px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={logVolumeData}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
                       <XAxis dataKey="hour" stroke="#94a3b8" />
                       <YAxis stroke="#94a3b8" />
-                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <ChartTooltip 
+                        contentStyle={{ backgroundColor: "#1e293b", border: "1px solid #475569" }}
+                        labelStyle={{ color: "#e2e8f0" }}
+                      />
                       <Legend />
-                      <Bar dataKey="firewall" fill="#06b6d4" />
-                      <Bar dataKey="ids" fill="#8b5cf6" />
-                      <Bar dataKey="system" fill="#10b981" />
+                      <Bar dataKey="firewall" fill="#06b6d4" name="Firewall" />
+                      <Bar dataKey="ids" fill="#8b5cf6" name="IDS/IPS" />
+                      <Bar dataKey="system" fill="#10b981" name="System" />
                     </BarChart>
                   </ResponsiveContainer>
-                </ChartContainer>
+                </div>
               </CardContent>
             </Card>
 
